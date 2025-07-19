@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python/
+env/
+venv/  # 仮想環境のディレクトリ
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.vscode/ # VS Codeの設定ファイル（launch.jsonなど）を含めたくない場合
+
+# Flask
+instance/ # Flaskのインスタンスフォルダ
+.flaskenv # Flaskの環境変数ファイル
