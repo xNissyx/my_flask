@@ -2,7 +2,7 @@
 仮想環境に入る用のコピペ
 .\venv\Scripts\activate
 """
-from flask import Flask         #   Flaskをインポート
+from flask import Flask, render_template         #   Flask, rendertemplatesをインポート
 
 app = Flask(__name__)
 
@@ -12,11 +12,11 @@ app = Flask(__name__)
 """
 @app.route('/')
 def hello_world():
-    return "<h1>ルートページです</h1>"
+    return render_template("index.html")
 
 @app.route('/about')
 def about():
-    return "Aboutページです"
+    return render_template("about.html")
 
 """
 Flask側の動き
