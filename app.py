@@ -3,8 +3,24 @@
 .\venv\Scripts\activate
 """
 from flask import Flask, render_template         #   Flask, rendertemplatesをインポート
+from flask_sqlalchemy import SQLAlchemy 
 
 app = Flask(__name__)
+
+# 'sqlite:///site.db' は、プロジェクトのルートに 'site.db' というファイル名でDBを作成するという意味
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+
+# ③ SQLAlchemyのインスタンスを作成
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)  # プライマリキー
+    username = db.Column(db.String(80), unique=True, nullable=False) # ユニークな文字列
+    email = db.Column(db.String(120), unique=True, nullable=False) # ユニークな文字列
+
+    def __repr__(self):
+        # オブジェクトを文字列で表現する方法を定義
+        return f'<User {self.username}>'
 
 """
 デコレーター
